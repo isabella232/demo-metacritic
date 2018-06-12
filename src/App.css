@@ -1,28 +1,38 @@
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  animation: App-logo-spin infinite 15s linear;
+  height: 60px;
 }
 
 .App-header {
+  display: flex;
+  align-items: center;
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
   font-size: 1.5em;
+  margin-left: 20px;
 }
 
-.App-intro {
-  font-size: large;
+.results {
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.results .ais-MultiIndex__root {
+  margin: 10px;
+}
+
+.results .ais-Hits-item {
+  width: 100%;
 }
