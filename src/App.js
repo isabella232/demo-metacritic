@@ -10,6 +10,7 @@ import {
   Index,
   InstantSearch,
   SearchBox,
+  Snippet,
 } from 'react-instantsearch/dom'
 
 class App extends Component {
@@ -55,45 +56,56 @@ class App extends Component {
 const ItemMusic = ({ hit }) =>
   <div className="Result-item Result-item-music">
     <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="content">
-      <div><Highlight attribute="name" hit={hit} /></div>
+    <div className="Result-item-content">
+      <div><a href=""><Snippet attribute="name" hit={hit} /></a></div>
       <div><Highlight attribute="artist" hit={hit} /></div>
-      <Metascore value={hit.meta_score} />
-      <Metascore value={hit.user_score} user={true} />
-      <div><a href="">metacritic.com ↗</a></div>
+      <div><Highlight attribute="genres" hit={hit} /></div>
+      <div className="Result-item-content-scores">
+        <Metascore value={hit.meta_score} />
+        <Metascore value={hit.user_score} user={true} />
+      </div>
     </div>
   </div>
 
 const ItemTv = ({ hit }) =>
   <div className="Result-item Result-item-tv">
     <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="content">
+    <div className="Result-item-content">
       <div><Highlight attribute="name" hit={hit} /></div>
       <div><Highlight attribute="starring" hit={hit} /></div>
-      <Metascore value={hit.meta_score} />
-      <Metascore value={hit.user_score} user={true} />
+      <div><Highlight attribute="genres" hit={hit} /></div>
+      <div className="Result-item-content-scores">
+        <Metascore value={hit.meta_score} />
+        <Metascore value={hit.user_score} user={true} />
+      </div>
     </div>
   </div>
 
 const ItemMovie = ({ hit }) =>
   <div className="Result-item Result-item-movie">
     <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="content">
+    <div className="Result-item-content">
       <div><Highlight attribute="name" hit={hit} /></div>
       <div><Highlight attribute="genre" hit={hit} /></div>
-      <Metascore value={hit.meta_score} />
-      <Metascore value={hit.user_score} user={true} />
+      <div className="Result-item-content-scores">
+        <Metascore value={hit.meta_score} />
+        <Metascore value={hit.user_score} user={true} />
+      </div>
     </div>
   </div>
 
 const ItemGame = ({ hit }) =>
   <div className="Result-item Result-item-game">
     <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="content">
-      <div><Highlight attribute="name" hit={hit} /></div>
+    <div className="Result-item-content">
+      <div><Snippet attribute="name" hit={hit} /></div>
       <div><Highlight attribute="platform" hit={hit} /></div>
-      <Metascore value={hit.meta_score} />
-      <Metascore value={hit.user_score} user={true} />
+      <div><Highlight attribute="publisher" hit={hit} /></div>
+      <div><Highlight attribute="genres" hit={hit} /></div>
+      <div className="Result-item-content-scores">
+        <Metascore value={hit.meta_score} />
+        <Metascore value={hit.user_score} user={true} />
+      </div>
     </div>
   </div>
 
@@ -114,7 +126,7 @@ const Metascore = ({ value, user }) => {
   else if (value > 39 || (user && value > 3.9)) {
     rank = 'medium'
   }
-  return <div className={'metascore ' + rank}>{rank === 'tbd' ? rank : value}</div>
+  return <span className={'metascore ' + rank}>{rank === 'tbd' ? rank : value}</span>
 }
 
 export default App
