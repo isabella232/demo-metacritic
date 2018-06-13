@@ -137,7 +137,11 @@
 
 .ais-MultiIndex__root {
   flex: 1;
-  margin: 0 20px 20px 20px;
+  margin: 0 0 20px 20px;
+}
+
+.ais-MultiIndex__root:last-child {
+  margin-right: 20px;
 }
 
 .ais-Hits-list {
