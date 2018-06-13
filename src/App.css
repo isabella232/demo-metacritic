@@ -4,35 +4,113 @@
 }
 
 .App {
-  text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 15s linear;
-  height: 60px;
+  height: 50px;
 }
 
 .App-header {
   display: flex;
   align-items: center;
   background-color: #222;
-  padding: 20px;
+  padding: 15px;
   color: white;
 }
 
 .App-title {
   font-size: 1.5em;
-  margin-left: 20px;
+  margin: 0 0 0 15px;
 }
 
-.results {
+.Section-title {
+  color: #333;
+  border-bottom: 1px solid #333;
+  margin-bottom: 0;
+}
+
+/* Components */
+.Results-container {
   display: flex;
+  margin-bottom: 50px;
 }
 
-.results .ais-MultiIndex__root {
-  margin: 10px;
+.Result-item {
+  display: flex;
+  height: 150px;
 }
 
-.results .ais-Hits-item {
+.Result-item-image {
+  margin-right: 15px;
+  height: 100%;
+}
+
+.Result-item-image img {
+  display: block;
+  max-height: 100%;
+}
+
+.metascore {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  margin-right: 5px;
+}
+.metascore.tbd {
+  background-color: #c5c5c5;
+}
+.metascore.low {
+  background-color: #ff0000;
+}
+.metascore.medium {
+  background-color: #ffc52d;
+}
+.metascore.high {
+  background-color: #5bc52d;
+}
+
+/* RIS specifics */
+.ais-SearchBox {
+  margin: 20px;
+}
+
+.ais-SearchBox-submit {
+  left: 15px;
+}
+
+.ais-SearchBox-input {
+  padding: 15px 15px 15px 45px;
+  outline: 0;
+  border-width: 2px;
+  font-size: 18px;
+  color: #333;
+}
+
+.ais-SearchBox-input:focus {
+  border-color: #ffc733;
+}
+
+.ais-MultiIndex__root {
+  flex: 1;
+  margin: 0 20px 20px 20px;
+}
+
+.ais-Hits-list {
   width: 100%;
+  margin: 0;
+}
+
+.ais-Hits-item {
+  width: 100%;
+  margin: 20px 0 0 0;
+}
+
+.ais-Highlight-highlighted {
+  background-color: transparent;
+  font-style: normal;
+  border-bottom: 1px solid ;
 }
