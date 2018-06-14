@@ -5,7 +5,6 @@ import './App.css'
 
 import {
   Configure,
-  Highlight,
   Hits,
   Index,
   InstantSearch,
@@ -54,54 +53,22 @@ class App extends Component {
 }
 
 const ItemMusic = ({ hit }) =>
-  <div className="Result-item Result-item-music">
-    <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="Result-item-content">
-      <div><a href=""><Snippet attribute="name" hit={hit} /></a></div>
-      <div><Highlight attribute="artist" hit={hit} /></div>
-      <div><Highlight attribute="genres" hit={hit} /></div>
-      <div className="Result-item-content-scores">
-        <Metascore value={hit.meta_score} />
-        <Metascore value={hit.user_score} user={true} />
-      </div>
-    </div>
-  </div>
+  <ItemSkeleton hit={hit} attributesToDisplay={['name', 'artist', 'genres']} />
 
 const ItemTv = ({ hit }) =>
-  <div className="Result-item Result-item-tv">
-    <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="Result-item-content">
-      <div><Highlight attribute="name" hit={hit} /></div>
-      <div><Highlight attribute="starring" hit={hit} /></div>
-      <div><Highlight attribute="genres" hit={hit} /></div>
-      <div className="Result-item-content-scores">
-        <Metascore value={hit.meta_score} />
-        <Metascore value={hit.user_score} user={true} />
-      </div>
-    </div>
-  </div>
+  <ItemSkeleton hit={hit} attributesToDisplay={['name', 'starring', 'genres']} />
 
 const ItemMovie = ({ hit }) =>
-  <div className="Result-item Result-item-movie">
-    <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
-    <div className="Result-item-content">
-      <div><Highlight attribute="name" hit={hit} /></div>
-      <div><Highlight attribute="genre" hit={hit} /></div>
-      <div className="Result-item-content-scores">
-        <Metascore value={hit.meta_score} />
-        <Metascore value={hit.user_score} user={true} />
-      </div>
-    </div>
-  </div>
+  <ItemSkeleton hit={hit} attributesToDisplay={['name', 'genre']} />
 
 const ItemGame = ({ hit }) =>
+  <ItemSkeleton hit={hit} attributesToDisplay={['name', 'platform', 'publisher', 'genres']} />
+
+const ItemSkeleton = ({ hit, attributesToDisplay }) =>
   <div className="Result-item Result-item-game">
     <div className="Result-item-image"><CustomImg url={hit.image} name={hit.name} /></div>
     <div className="Result-item-content">
-      <div><Snippet attribute="name" hit={hit} /></div>
-      <div><Highlight attribute="platform" hit={hit} /></div>
-      <div><Highlight attribute="publisher" hit={hit} /></div>
-      <div><Highlight attribute="genres" hit={hit} /></div>
+      {attributesToDisplay.map(attr => <div><Snippet attribute={attr} hit={hit} /></div>)}
       <div className="Result-item-content-scores">
         <Metascore value={hit.meta_score} />
         <Metascore value={hit.user_score} user={true} />
